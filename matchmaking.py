@@ -3,7 +3,7 @@ import httpx
 import json
 
 from recnetlogin import RecNetLogin
-rnl = RecNetLogin(env_path="C:/Users/turtl/.env.secret")
+rnl = RecNetLogin()
 
 mmend = "https://match.rec.net/player?id=%s"
 

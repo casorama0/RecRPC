@@ -2,13 +2,21 @@ import httpx as requests
 import json
 import recnetpy
 import asyncio
+from dotenv import dotenv_values
 
 
 class room:
     default_dorm_image = "https://img.rec.net/a7c4mxpejlasupag1mkdne875.jpg?cropSquare=True"
     default_private_image = "https://img.rec.net/DefaultRoomImage.jpg?cropSquare=True"
     cache = {}
-    RecNet = recnetpy.Client(api_key="917910817ccd48488b08b1677c4edadd")
+    
+    env = dotenv_values(".env.secret")
+
+    if "RN_API_KEY" in env:
+       RecNet = recnetpy.Client(api_key=env["RN_API_KEY"])
+    else:
+       raise ValueError("You're missing the RN_API_KEY in your .env.secret file.")
+    
 
     def __init__(self, roomID, name, type):
         self.roomID = roomID  # Store room ID for potential future use
@@ -35,7 +43,13 @@ class room:
 
 class event:
     cache = {}
-    RecNet = recnetpy.Client(api_key="917910817ccd48488b08b1677c4edadd")
+
+    env = dotenv_values(".env.secret")
+
+    if "RN_API_KEY" in env:
+       RecNet = recnetpy.Client(api_key=env["RN_API_KEY"])
+    else:
+       raise ValueError("You're missing the RN_API_KEY in your .env.secret file.")
     
     async def async_setup(self, eventId):
       
