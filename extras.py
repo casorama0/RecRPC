@@ -12,15 +12,18 @@ class room:
     
     env = dotenv_values(".env.secret")
 
-    if "RN_API_KEY" in env:
-       RecNet = recnetpy.Client(api_key=env["RN_API_KEY"])
-    else:
-       raise ValueError("You're missing the RN_API_KEY in your .env.secret file.")
+    
     
 
     def __init__(self, roomID, name, type):
-        self.roomID = roomID  # Store room ID for potential future use
         
+        self.roomID = roomID  # Store room ID for potential future use
+        if "RN_API_KEY" in self.env:
+          self.RecNet = recnetpy.Client(api_key=self.env["RN_API_KEY"])
+        else:
+          raise ValueError("You're missing the RN_API_KEY in your .env.secret file.")
+
+
         asyncio.ensure_future(self.async_setup(roomID, name, type))
 
     async def async_setup(self, roomID, name, type):
@@ -46,10 +49,7 @@ class event:
 
     env = dotenv_values(".env.secret")
 
-    if "RN_API_KEY" in env:
-       RecNet = recnetpy.Client(api_key=env["RN_API_KEY"])
-    else:
-       raise ValueError("You're missing the RN_API_KEY in your .env.secret file.")
+    
     
     async def async_setup(self, eventId):
       
@@ -71,6 +71,11 @@ class event:
 
     def __init__(self, eventId):
       
+
+      if "RN_API_KEY" in self.env:
+       self.RecNet = recnetpy.Client(api_key=self.env["RN_API_KEY"])
+      else:
+       raise ValueError("You're missing the RN_API_KEY in your .env.secret file.")
       asyncio.ensure_future(self.async_setup(eventId))
 
 
