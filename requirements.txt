@@ -1,0 +1,5 @@
+discord_rich_presence==1.1.0
+httpx==0.27.2
+python-dotenv==1.0.1
+recnetlogin==0.1.1
+recnetpy==0.2.71

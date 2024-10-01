@@ -2,3 +2,6 @@
 __pycache__
 README.md
 accountInfo.json
+main.spec
+dist
+build

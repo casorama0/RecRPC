@@ -110,7 +110,7 @@ def setup():
     try: 
         with open('accountInfo.json', 'r') as openfile:
             data = json.load(openfile)
-    except:
+    except FileNotFoundError:
       username = input("Please enter your username: \n")
 
       try:
@@ -121,10 +121,9 @@ def setup():
 
       data = {"userID": userID,
               "username": username}
-      data = json.dumps(data)
 
       with open('accountInfo.json', 'w') as outfile:
-        outfile.write(data)
+        json.dump(data, outfile)
       print("New user data has been written")
       return data
     else:
