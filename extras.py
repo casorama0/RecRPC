@@ -20,7 +20,6 @@ class Room:
     )
     default_private_image = "https://img.rec.net/DefaultRoomImage.jpg?cropSquare=True"
     cache = {}
-
     env = dotenv_values(".env.secret")
 
     def __init__(self, room_id, name, instance_type):

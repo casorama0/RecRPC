@@ -1,5 +1,6 @@
 import asyncio
 import time
+import os
 from discordrp import Presence
 from extras import setup, Room, Event
 from matchmaking import info, room_instance
@@ -101,6 +102,7 @@ async def main():
                     }
                 ]
         })
+        os.system('cls' if os.name=='nt' else 'clear')
         print(f"Updated Presence:\nRoomID: {r.roomId}\nRoomName: {r.name}")
 
         time.sleep(60)
