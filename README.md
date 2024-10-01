@@ -8,9 +8,12 @@ RecRPC is a cross-platform Discord rich presence client for Rec Room. It hides p
 * This uses your RecNet authorization token to obtain data from the matchmaking API
    * Follow [RecNetLogin's setup guide](https://github.com/Jegarde/RecNet-Login?tab=readme-ov-file#setup) for obtaining the proper session token
 * This is largely an off and on project for me. The programming might be a little wonky in some areas, but everything seems to work at the moment.
-* This does not have alt account support.
+* Alt accounts are supported
 
 ## Setup
+
+* Create a file called `.env.secret` in the same directory as `main.py`
+
 The .env.secret file should be setup in the following way:  
 ```
 RN_SESSION_TOKEN=YOUR_SESSION_TOKEN  
