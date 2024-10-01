@@ -11,6 +11,9 @@ RecRPC is a cross-platform Discord rich presence client for Rec Room. It hides p
 * This does not have alt account support.
 
 ## Setup
+
+* Create a file called `.env.secret` in the same directory as `main.py`
+
 The .env.secret file should be setup in the following way:  
 ```
 RN_SESSION_TOKEN=YOUR_SESSION_TOKEN  
