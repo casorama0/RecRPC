@@ -35,7 +35,7 @@ async def main():
     }
 
     while True:
-        m = info(x)
+        m = info(x["userID"])
         
 
         try:
@@ -90,7 +90,13 @@ async def main():
                 "large_image": image,
                 "small_image": deviceTypes.get(m.deviceClass)[0],
                 "small_text": deviceTypes.get(m.deviceClass)[1]
-            }
+            },
+            "buttons":[
+                    {
+                        "label": "Profile",
+                        "url": f"https://rec.net/user/{x["username"]}"
+                    }
+                ]
         })
         print(f"Updated Presence:\nRoomID: {r.roomId}\nRoomName: {r.name}")
 

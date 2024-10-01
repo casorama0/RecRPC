@@ -119,7 +119,8 @@ def setup():
         print("Invalid username provided")
         exit()
 
-      data = {"userID": userID}
+      data = {"userID": userID,
+              "username": username}
       data = json.dumps(data)
 
       with open('accountInfo.json', 'w') as outfile:
@@ -127,4 +128,4 @@ def setup():
       print("New user data has been written")
     else:
       print("User file found and loaded")
-      return data["userID"]
+      return data
