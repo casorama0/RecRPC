@@ -1,14 +1,17 @@
 import asyncio
-from extras import setup, room, event
-from matchmaking import info, roomInstance
-import recnetpy
 import time
 from discordrp import Presence
+from extras import setup, Room, Event
+from matchmaking import info, room_instance
 
 
 
-async def main():
-    
+
+
+async def main(): 
+    """
+    Main.
+    """
     last = ""
     x = setup()
 
@@ -39,7 +42,7 @@ async def main():
         
 
         try:
-            r = roomInstance(m) 
+            r = room_instance(m) 
         except:
             RPC.set(
                 {
@@ -64,14 +67,14 @@ async def main():
 
         # Room Instance Types
         if r.roomInstanceType in (0, 1, 2):  # Standard rooms
-            obj = room(r.roomId, r.name, r.roomInstanceType)
+            obj = Room(r.roomId, r.name, r.roomInstanceType)
             await obj.async_setup(r.roomId, r.name, r.roomInstanceType)
             
             image = obj.image
             name = obj.name
 
         elif r.roomInstanceType in (3, 6):
-            obj = event(r.eventId)
+            obj = Event(r.eventId)
             await obj.async_setup(r.eventId)
 
             image = obj.image
