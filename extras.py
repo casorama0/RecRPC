@@ -126,6 +126,7 @@ def setup():
       with open('accountInfo.json', 'w') as outfile:
         outfile.write(data)
       print("New user data has been written")
+      return data
     else:
       print("User file found and loaded")
       return data

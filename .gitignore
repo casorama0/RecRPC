@@ -1,4 +1,4 @@
 *.secret
 __pycache__
-accountInfo.json
 README.md
+accountInfo.json
