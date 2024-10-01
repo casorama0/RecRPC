@@ -1,6 +1,6 @@
 import asyncio
 from extras import setup, room, event
-from matchmaking import info, roomInstance  # Assuming async versions exist
+from matchmaking import info, roomInstance
 import recnetpy
 import time
 from discordrp import Presence
@@ -30,12 +30,12 @@ async def main():
         1: ["pcvr", "PCVR"],
         2: ["screen", "Desktop"],
         3: ["cell-phone-svgrepo-com_1", "Mobile"],
-        4: ["meta", "Quest 1"],
+        4: ["meta", "Quest 1"], # Quest 1 is no longer supported
         5: ["meta", "Quest 2"]
     }
 
     while True:
-        m = info(x)  # Request from matchmaking API asynchronously
+        m = info(x)
         r = roomInstance(m) 
 
         tag = roomTypes.get(r.roomInstanceType)
@@ -48,7 +48,7 @@ async def main():
             image = obj.image
             name = obj.name
 
-        elif r.roomInstanceType == 3:
+        elif r.roomInstanceType in (3, 6):
             obj = event(r.eventId)
             await obj.async_setup(r.eventId)
 
@@ -72,7 +72,7 @@ async def main():
         })
         print("Presence updated.")
 
-        time.sleep(15)
+        time.sleep(60)
 
 
 if __name__ == "__main__":
