@@ -9,6 +9,7 @@ RecRPC is a cross-platform Discord rich presence client for Rec Room. It hides p
    * Follow [RecNetLogin's setup guide](https://github.com/Jegarde/RecNet-Login?tab=readme-ov-file#setup) for obtaining the proper session token
 * This is largely an off and on project for me. The programming might be a little wonky in some areas, but everything seems to work at the moment.
 * Alt accounts are supported
+* Inspired by Jegarde's [old rich presence client](https://github.com/Jegarde/RecRoomDiscordRPC) :) would not be possible without [RecNetLogin](https://github.com/Jegarde/RecNet-Login) or [RecNetPy](https://github.com/RecNetBot-Development/RecNetPy)
 
 ## Setup
 
