@@ -30,20 +30,26 @@ class room:
         
         self.loadCache()
         
-        if roomID in self.cache:
-           fetched_room = self.cache.get(roomID)
-        
-        else:
+        try:
+          self.cache[str(roomID)]
+        except:
           fetched_room = await self.RecNet.rooms.fetch(roomID)
-          self.cache[roomID] = fetched_room
+          try:
+             fetched_room = {"name": fetched_room.name,
+                          "image": fetched_room.image_name}
+          except:
+             fetched_room = None
+          self.cache[str(roomID)] = fetched_room
           print("Cached new room data")
           self.saveCache()
+        else:
+           fetched_room = self.cache.get(str(roomID))
 
 
-        self.name = name if fetched_room is None and type == 2 else (fetched_room.name if fetched_room else "Private Room")
+        self.name = name if fetched_room is None and type == 2 else (fetched_room["name"] if fetched_room else "Private Room")
         self.image = (
             self.default_dorm_image if fetched_room is None and type == 2 else (
-                "https://img.rec.net/" + fetched_room.image_name + "?cropSquare=True" if (fetched_room) else self.default_private_image
+                "https://img.rec.net/" + fetched_room["image"] + "?cropSquare=True" if (fetched_room) else self.default_private_image
             )
         )
       

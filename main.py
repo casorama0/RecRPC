@@ -36,7 +36,29 @@ async def main():
 
     while True:
         m = info(x)
-        r = roomInstance(m) 
+        
+
+        try:
+            r = roomInstance(m) 
+        except:
+            RPC.set(
+                {
+                "state": "Logging In",
+                "timestamps": {
+                    "start": int(time.time())
+                    },
+                "assets": {
+                    "large_image": "login",
+                    "small_image": deviceTypes.get(m.deviceClass)[0],
+                    "small_text": deviceTypes.get(m.deviceClass)[1]
+                    }
+                }
+            )
+
+            print("Updated presence: LOGIN")
+            time.sleep(15)
+            continue
+            
 
         tag = roomTypes.get(r.roomInstanceType)
 
@@ -70,7 +92,7 @@ async def main():
                 "small_text": deviceTypes.get(m.deviceClass)[1]
             }
         })
-        print("Presence updated.")
+        print(f"Updated Presence:\nRoomID: {r.roomId}\nRoomName: {r.name}")
 
         time.sleep(60)
 
